@@ -1,0 +1,6 @@
+projectKey=org.koushik.javabrains:Task
+serverUrl=http://localhost:9000
+serverVersion=6.7.3.38370
+dashboardUrl=http://localhost:9000/dashboard/index/org.koushik.javabrains:Task
+ceTaskId=AWLu9lFkRJqzbisvFdKA
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWLu9lFkRJqzbisvFdKA
