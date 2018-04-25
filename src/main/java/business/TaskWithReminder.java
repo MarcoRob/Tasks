@@ -11,17 +11,17 @@ public class TaskWithReminder implements Task {
 	protected Reminder reminder;
 	
 	private String title,
-				   description;
+				   description,
+				   userId;
 	
-	private long dueDate,
-				 userId;
+	private long dueDate;
 	private BigInteger completedDate;
 
 	public TaskWithReminder() {
 		
 	}
 	
-	public TaskWithReminder(String title, String description, long dueDate, BigInteger completedDate, long userId) {
+	public TaskWithReminder(String title, String description, long dueDate, BigInteger completedDate, String userId) {
 		this.setTitle(title);
 		this.setDescription(description);
 		this.setDueDate(dueDate);
@@ -67,11 +67,11 @@ public class TaskWithReminder implements Task {
 		return reminder;
 	}
 
-	public long getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 	
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

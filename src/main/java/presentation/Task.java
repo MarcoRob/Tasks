@@ -14,9 +14,9 @@ public interface Task {
 	
 	public void setDescription(String description);
 	
-	public long getUserId();
+	public String getUserId();
 	
-	public void setUserId(long userId);
+	public void setUserId(String userId);
 	
 	public long getDueDate();
 	

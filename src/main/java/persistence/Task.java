@@ -57,7 +57,7 @@ public class Task extends business.TaskWithReminder implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "user_id")
-    private long userId;
+    private String userId;
 
     public Task() {
 
@@ -67,7 +67,7 @@ public class Task extends business.TaskWithReminder implements Serializable {
         this.id = id;
     }
 
-    public Task(Long id, String title, String description, long dueDate,  BigInteger completedDate, long userId) {
+    public Task(Long id, String title, String description, long dueDate,  BigInteger completedDate, String userId) {
     	super(title, description, dueDate, completedDate,  userId);
         this.id = id;
     }
@@ -112,11 +112,11 @@ public class Task extends business.TaskWithReminder implements Serializable {
         this.completedDate = completedDate;
     }
 
-    public long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
