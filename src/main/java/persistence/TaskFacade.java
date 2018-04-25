@@ -33,10 +33,17 @@ public class TaskFacade implements business.TaskManager {
         em.getTransaction().commit();
     }
 
-    public void remove(Task entity) {
+    public void remove(presentation.Task entity) {
     	em.getTransaction().begin();
     	em.remove(em.merge(entity));
         em.getTransaction().commit();
+    }
+    
+    public void removeUser(String userId){
+    	List<presentation.Task> userTasks =  this.getUserTasks(userId);
+    	for (presentation.Task task: userTasks){
+    		this.remove(task);
+    	}
     }
 
     public presentation.Task getTask(long id) {
@@ -55,7 +62,7 @@ public class TaskFacade implements business.TaskManager {
     		    .getResultList();
     }
     
-    public List<presentation.Task> getUserTasks(long userId) {
+    public List<presentation.Task> getUserTasks(String userId) {
     	return em.createNamedQuery("Tasks.findByUserId")
     		    .setParameter("userId", userId)
     		    .getResultList();

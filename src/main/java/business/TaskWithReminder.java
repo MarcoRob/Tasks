@@ -14,7 +14,8 @@ public class TaskWithReminder implements Task {
 				   description,
 				   userId;
 	
-	private long dueDate;
+	protected long dueDate,
+				 remind;
 	private BigInteger completedDate;
 
 	public TaskWithReminder() {
@@ -28,6 +29,7 @@ public class TaskWithReminder implements Task {
 		this.setUserId(userId);
 		this.setCompletedDate(completedDate);
 		this.createReminder();
+		this.setRemind(this.reminder.getTime());
 	}
 	
 	public void createReminder() {
@@ -83,6 +85,18 @@ public class TaskWithReminder implements Task {
 	@Override
 	public void setCompletedDate(BigInteger completedDate) {
 		this.completedDate = completedDate;
+		
+	}
+
+	@Override
+	public long getRemind() {
+		// TODO Auto-generated method stub
+		return this.remind;
+	}
+
+	@Override
+	public void setRemind(long remind) {
+		this.remind = remind;
 		
 	}
 

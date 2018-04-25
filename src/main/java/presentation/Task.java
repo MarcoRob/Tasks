@@ -26,6 +26,10 @@ public interface Task {
 	
 	public void setCompletedDate(BigInteger completedDate);
 	
+	public long getRemind();
+	
+	public void setRemind(long remind);
+	
 	public Reminder getReminder();
 	
 }

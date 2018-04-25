@@ -3,6 +3,7 @@ package presentation;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -38,7 +39,7 @@ public class TaskResource {
 	@GET
 	@Path("/user/{userId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Task> getUserTasks(@PathParam("userId")long userId)
+	public List<Task> getUserTasks(@PathParam("userId")String userId)
 	{
 		return this.taskService.getUserTasks(userId);
 	}
@@ -55,9 +56,15 @@ public class TaskResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Task update(@PathParam("taskId")long taskId, persistence.Task task){
-		//Task oldTask = this.taskService.getTask(taskId);
 		task.setId(taskId);
 		this.taskService.updateTask(task);
 		return task;
+	}
+	
+	@DELETE 
+	@Path("/user/{userId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public void update(@PathParam("userId")String userId){
+		this.taskService.removeUser(userId);
 	}
 }

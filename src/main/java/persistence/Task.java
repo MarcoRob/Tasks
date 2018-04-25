@@ -58,6 +58,8 @@ public class Task extends business.TaskWithReminder implements Serializable {
     @NotNull
     @Column(name = "user_id")
     private String userId;
+    @Column(name = "reminder")
+    private long reminder;
 
     public Task() {
 
@@ -118,6 +120,15 @@ public class Task extends business.TaskWithReminder implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+    
+    public long getRemind() {
+		long currentUnixTime = System.currentTimeMillis() / 1000L;
+		return this.getDueDate() - currentUnixTime;
+    }
+
+    public void setRemind(long remind) {
+        this.reminder = remind;
     }
 
     @Override

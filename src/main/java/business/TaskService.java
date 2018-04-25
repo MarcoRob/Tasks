@@ -21,7 +21,7 @@ public class TaskService implements presentation.TaskService{
 	}
 
 	@Override
-	public List<Task> getUserTasks(long userId) {
+	public List<Task> getUserTasks(String userId) {
 		return taskManager.getUserTasks(userId);
 	}
 
@@ -38,6 +38,14 @@ public class TaskService implements presentation.TaskService{
 	@Override
 	public void updateTask(Task task) {
 		taskManager.updateTask(task);
+		
+	}
+
+
+
+	@Override
+	public void removeUser(String userId) {
+		taskManager.removeUser(userId);
 		
 	}
 
