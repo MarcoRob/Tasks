@@ -6,5 +6,7 @@
   `completed_date` bigint(20) DEFAULT NULL,
   `user_id` varchar(35) NOT NULL,
   `reminder` bigint(20) DEFAULT NULL,
+  `reminder_date` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
+
