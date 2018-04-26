@@ -2,8 +2,8 @@ package business;
 
 public class Reminder {
 
-	long time;
-	long dueDate;
+	private long time;
+	private long dueDate;
 	
 	public Reminder(long dueDate) {
 		this.dueDate = dueDate;

@@ -10,11 +10,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
-import business.TaskWithReminder;
 
 
 
@@ -38,7 +35,7 @@ public class TaskResource {
 	}
 	
 	@GET
-	@Path("/user/{userId}/tasks")
+	@Path("/users/{userId}/tasks")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Task> getUserTasks(@PathParam("userId")String userId)
 	{
@@ -64,7 +61,7 @@ public class TaskResource {
 	}
 	
 	@DELETE 
-	@Path("/user/{userId}/tasks")
+	@Path("/users/{userId}/tasks")
 	@Produces(MediaType.APPLICATION_JSON)
 	public void update(@PathParam("userId")String userId){
 		this.taskService.removeUser(userId);
