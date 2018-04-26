@@ -2,13 +2,11 @@ package business;
 
 import java.math.BigInteger;
 
-import presentation.Reminder;
 import presentation.Task;
 
 
 public class TaskWithReminder implements Task {
 	
-	protected Reminder reminder;
 	
 	private String title,
 				   description,
@@ -28,18 +26,10 @@ public class TaskWithReminder implements Task {
 		this.setDueDate(dueDate);
 		this.setUserId(userId);
 		this.setCompletedDate(completedDate);
-		this.createReminder();
-		this.setRemind(this.reminder.getTime());
+		business.Reminder reminder = new business.Reminder(this.getDueDate());
+		this.setRemind(reminder.getTime());
 	}
 	
-	public void createReminder() {
-		this.reminder = new Reminder(this.calculateRemainingTime());
-	}
-	
-	private long calculateRemainingTime() {
-		long currentUnixTime = System.currentTimeMillis() / 1000L;
-		return this.getDueDate() - currentUnixTime;
-	}
 
 	public String getTitle() {
 		return title;
@@ -63,10 +53,6 @@ public class TaskWithReminder implements Task {
 
 	public void setDueDate(long dueDate) {
 		this.dueDate = dueDate;
-	}
-
-	public Reminder getReminder() {
-		return reminder;
 	}
 
 	public String getUserId() {

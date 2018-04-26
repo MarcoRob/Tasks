@@ -16,7 +16,6 @@ public class TaskService implements presentation.TaskService{
 	@Override
 	public TaskWithReminder getTask(long taskId) {
 		TaskWithReminder task = (TaskWithReminder) taskManager.getTask(taskId);
-		task.createReminder();
 		return task;
 	}
 

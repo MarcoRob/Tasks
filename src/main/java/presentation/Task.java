@@ -30,6 +30,6 @@ public interface Task {
 	
 	public void setRemind(long remind);
 	
-	public Reminder getReminder();
+
 	
 }

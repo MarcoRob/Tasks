@@ -24,7 +24,7 @@ public class Testing {
         return toJSON(taskService.getAllTasks());
     }
 	public long createReminder() {
-		Reminder reminder = new Reminder(this.calculateRemainingTime());
+		business.Reminder reminder = new business.Reminder(this.calculateRemainingTime());
 		return reminder.getTime();
 	}
 	
