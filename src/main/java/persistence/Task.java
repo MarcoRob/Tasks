@@ -20,6 +20,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import business.Reminder;
+
 @Entity
 @Table(name = "tasks")
 @XmlRootElement
@@ -123,8 +125,8 @@ public class Task extends business.TaskWithReminder implements Serializable {
     }
     
     public long getRemind() {
-		long currentUnixTime = System.currentTimeMillis() / 1000L;
-		return this.getDueDate() - currentUnixTime;
+    	business.Reminder reminder = new business.Reminder(this.getDueDate());
+		return reminder.getTime();
     }
 
     public void setRemind(long remind) {
