@@ -3,16 +3,16 @@ package business;
 public class Reminder {
 
 	private long time;
-	private long dueDate;
+	private long remindDate;
 	
-	public Reminder(long dueDate) {
-		this.dueDate = dueDate;
+	public Reminder(long remindDate) {
+		this.remindDate = remindDate;
 		this.time = this.calculateRemainingTime();
 	}
 	
 	private long calculateRemainingTime() {
 		long currentUnixTime = System.currentTimeMillis() / 1000L;
-		return this.dueDate - currentUnixTime;
+		return this.remindDate - currentUnixTime;
 	}
 	
 	public long getTime() {

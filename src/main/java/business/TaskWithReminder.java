@@ -14,20 +14,22 @@ public class TaskWithReminder implements Task {
 	
 	protected long dueDate;
 	protected long remind;
+	protected long remindDate;
 	private BigInteger completedDate;
 
-	public TaskWithReminder() {
+	public TaskWithReminder()  {
 		
 	}
 	
-	public TaskWithReminder(String title, String description, long dueDate, BigInteger completedDate, String userId) {
+	public TaskWithReminder(String title, String description, long dueDate, BigInteger completedDate, String userId, long remindDate) {
 		this.setTitle(title);
 		this.setDescription(description);
 		this.setDueDate(dueDate);
 		this.setUserId(userId);
 		this.setCompletedDate(completedDate);
-		business.Reminder reminder = new business.Reminder(this.getDueDate());
+		Reminder reminder = new Reminder(this.getDueDate());
 		this.setRemind(reminder.getTime());
+		this.setRemindDate(remindDate);
 	}
 	
 
@@ -62,13 +64,11 @@ public class TaskWithReminder implements Task {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
-	@Override
+	
 	public BigInteger getCompletedDate() {
 		return this.completedDate;
 	}
-
-	@Override
+	
 	public void setCompletedDate(BigInteger completedDate) {
 		this.completedDate = completedDate;
 		
@@ -81,6 +81,14 @@ public class TaskWithReminder implements Task {
 	public void setRemind(long remind) {
 		this.remind = remind;
 		
+	}
+
+	public long getRemindDate() {
+		return remindDate;
+	}
+
+	public void setRemindDate(long remindDate) {
+		this.remindDate = remindDate;
 	}
 
 }

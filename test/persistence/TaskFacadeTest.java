@@ -30,6 +30,7 @@ public class TaskFacadeTest {
     private static final int DUE_DATE_COL = 4;
     private static final int COMPLETED_DATE_COL = 5;
     private static final int USER_ID_COL = 6;
+    private static final int REMINDER_DATE_COL = 7;
     
     
     private static String db_driver = "com.mysql.jdbc.Driver";
@@ -58,8 +59,9 @@ public class TaskFacadeTest {
         long dueDate = queryResults.getLong(DUE_DATE_COL);
         BigInteger completedDate = BigInteger.valueOf(queryResults.getLong(COMPLETED_DATE_COL));
         String taskUserId = queryResults.getString(USER_ID_COL);
+        long remindDate = queryResults.getLong(REMINDER_DATE_COL);
         persistence.Task foundTask = new persistence.Task(id, title,
-                description, dueDate, completedDate, taskUserId);
+                description, dueDate, completedDate, taskUserId, remindDate);
         return foundTask;
     }
     
@@ -139,7 +141,7 @@ public class TaskFacadeTest {
         System.out.println("addTask");
         Task entity = new persistence.Task((long) 0, testTitle,
                 "Description of new task", 99999, null,
-                TaskFacadeTest.test_user);
+                TaskFacadeTest.test_user, 99999);
         TaskFacade instance = new TaskFacade();
         instance.addTask(entity);
         try{
@@ -190,8 +192,9 @@ public class TaskFacadeTest {
             long oldDueDate = queryResults.getLong(DUE_DATE_COL);
             long oldCompletedDate = queryResults.getLong(COMPLETED_DATE_COL);
             String taskUserId = queryResults.getString(USER_ID_COL);
+            long oldRemindDate = queryResults.getLong(REMINDER_DATE_COL);
             Task updatedTask = new persistence.Task(oldId, oldTitle,
-                    newDescription, newDueDate, null, taskUserId);
+                    newDescription, newDueDate, null, taskUserId, oldRemindDate);
             TaskFacade instance = new TaskFacade();
             instance.updateTask(updatedTask);
             String updatedQuery = "SELECT * FROM tasks where id="+oldId;
