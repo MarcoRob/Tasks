@@ -18,10 +18,11 @@ import business.TaskWithReminder;
 
 
 
-@Path("task") 
+@Path("") 
 public class TaskResource {
 	TaskService taskService = new business.TaskService();
 	@GET
+	@Path("/tasks") 
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Task> getTasks()
 	{
@@ -29,7 +30,7 @@ public class TaskResource {
 	}
 	
 	@GET
-	@Path("/{taskId}")
+	@Path("/task/{taskId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Task getTask(@PathParam("taskId")long taskId)
 	{
@@ -37,7 +38,7 @@ public class TaskResource {
 	}
 	
 	@GET
-	@Path("/user/{userId}")
+	@Path("/user/{userId}/tasks")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Task> getUserTasks(@PathParam("userId")String userId)
 	{
@@ -45,6 +46,7 @@ public class TaskResource {
 	}
 	
 	@POST 
+	@Path("/tasks") 
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Task addTask(persistence.Task task){
@@ -52,7 +54,7 @@ public class TaskResource {
 		return task;
 	}
 	@PUT 
-	@Path("/{taskId}")
+	@Path("/task/{taskId}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Task update(@PathParam("taskId")long taskId, persistence.Task task){
@@ -62,7 +64,7 @@ public class TaskResource {
 	}
 	
 	@DELETE 
-	@Path("/user/{userId}")
+	@Path("/user/{userId}/tasks")
 	@Produces(MediaType.APPLICATION_JSON)
 	public void update(@PathParam("userId")String userId){
 		this.taskService.removeUser(userId);
