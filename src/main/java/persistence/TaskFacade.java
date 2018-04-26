@@ -1,6 +1,5 @@
 package persistence;
 
-import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -92,32 +91,5 @@ public class TaskFacade implements business.TaskManager {
         return ((Long) q.getSingleResult()).intValue();
     }
 
-
-    
-    /*
-    public static void main(String[] args) {
-    	TaskFacade tf = new TaskFacade();
-    	Task t = tf.findByTitle("Proyecto Arqui").get(0);
-    	
-    	Task new_t = new Task(null, "Diseño Arco", (long) 7778, (long) 3);
-    	System.out.println(new_t);
-    	//tf.create(new_t);
-    	
-    	Task update_t = tf.findByTitleAndUserId("Proyecto Arqui", 1).get(0);
-    	update_t.setCompletedDate(BigInteger.valueOf(7756));
-    	//tf.edit(update_t);
-    	
-    	//tf.remove(tf.find((long) 7));
-    	
-    	
-    	System.out.println("ID 1: "+tf.find((long) 1));
-    	System.out.println("TITLE: "+tf.findByTitle("Proyecto Arqui"));
-    	System.out.println("TITLE and UserId: "+tf.findByTitleAndUserId("Proyecto Arqui", 1));
-    	System.out.println("Find by user: "+tf.findByUser((long) 1));
-    	System.out.println("ALL: "+tf.findAll());
-    	System.out.println("Single id: "+t.getId() + " title: "+t.getTitle()+" desc: "+t.getDescription());
-    	System.out.println("Count: "+tf.count());
-    }
-    */
     
 }

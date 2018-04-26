@@ -8,12 +8,12 @@ import presentation.Task;
 public class TaskWithReminder implements Task {
 	
 	
-	private String title,
-				   description,
-				   userId;
+	private String title;
+	private String description;
+	private String userId;
 	
-	protected long dueDate,
-				 remind;
+	protected long dueDate;
+	protected long remind;
 	private BigInteger completedDate;
 
 	public TaskWithReminder() {
@@ -74,13 +74,10 @@ public class TaskWithReminder implements Task {
 		
 	}
 
-	@Override
 	public long getRemind() {
-		// TODO Auto-generated method stub
 		return this.remind;
 	}
 
-	@Override
 	public void setRemind(long remind) {
 		this.remind = remind;
 		
